@@ -12,9 +12,6 @@ WORKDIR /nurse-api
 # Копируйте исходный код приложения в контейнер
 COPY / /nurse-api
 
-# Копируйте файлы из api/src/main/resources/exercise в папку ресурсов внутри контейнера
-COPY src/main/resources/exercise /nurse-api/src/main/resources/exercise
-
 # Соберите JAR-файл внутри контейнера
 RUN mvn clean package
 
