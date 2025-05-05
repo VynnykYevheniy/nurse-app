@@ -15,5 +15,5 @@ COPY / /nurse-api
 # Соберите JAR-файл внутри контейнера
 RUN mvn clean package
 
-# Команда для запуска приложения (замените "nurse-api-0.1.jar" на имя вашего JAR-файла)
-CMD ["java", "-jar", "target/nurse-api-0.1.jar"]
+# Команда для запуска приложения
+CMD ["java", "-jar", "target/nurse-app-0.1.jar"]
