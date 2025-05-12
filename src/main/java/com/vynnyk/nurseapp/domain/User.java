@@ -28,7 +28,17 @@ public class User implements UserDetails {
 
 	private String fullName;
 	private String phoneNumber;
+
+	private String city;
 	private String address;
+
+	@ManyToMany
+	@JoinTable(
+			name = "nurse_services",
+			joinColumns = @JoinColumn(name = "nurse_id"),
+			inverseJoinColumns = @JoinColumn(name = "service_id")
+	)
+	private List<MedicalService> services;
 
 	// UserDetails methods
 	@Override
