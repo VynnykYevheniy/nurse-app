@@ -13,12 +13,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class User implements UserDetails {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String username;
 	private String password;
@@ -31,14 +32,6 @@ public class User implements UserDetails {
 
 	private String city;
 	private String address;
-
-	@ManyToMany
-	@JoinTable(
-			name = "nurse_services",
-			joinColumns = @JoinColumn(name = "nurse_id"),
-			inverseJoinColumns = @JoinColumn(name = "service_id")
-	)
-	private List<MedicalService> services;
 
 	// UserDetails methods
 	@Override

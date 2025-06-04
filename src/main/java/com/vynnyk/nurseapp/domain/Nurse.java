@@ -8,22 +8,20 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "medical_services")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class MedicalService {
+@NoArgsConstructor
+public class Nurse extends User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-	private String description;
-
-	@ManyToOne
-	private Task task;
-
-	@ManyToMany(mappedBy = "services")
-	private List<Nurse> nurses;
+	@ManyToMany
+	@JoinTable(
+			name = "nurse_services",
+			joinColumns = @JoinColumn(name = "nurse_id"),
+			inverseJoinColumns = @JoinColumn(name = "service_id")
+	)
+	private List<MedicalService> services;
 }
